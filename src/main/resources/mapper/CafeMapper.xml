@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.white_space.cafe.adapter.CafeMapper">
+<mapper namespace="com.white_space.cafe.mapper.CafeMapper">
 
     <insert id="saveCafe" parameterType="Cafe">
         INSERT INTO cafe (cafe_name,cafe_image)
         VALUES (#{cafeName},#{cafeImage})
     </insert>
 
-    <update id="saveData" parameterType="Cafe">
+    <update id="updateData" parameterType="Cafe">
         UPDATE cafe
         SET remain_seat = #{remainSeat}, percent = #{percent}
         WHERE cafe_id = #{cafeId}

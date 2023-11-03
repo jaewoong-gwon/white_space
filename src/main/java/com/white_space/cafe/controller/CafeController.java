@@ -1,10 +1,9 @@
 package com.white_space.cafe.controller;
 
-import com.white_space.cafe.application.service.CafeService;
+import com.white_space.cafe.service.CafeService;
 import com.white_space.cafe.dto.Cafe;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +21,6 @@ public class CafeController {
     @PostMapping("")
     public ResponseEntity<?> saveCafe(@RequestPart MultipartFile cafeImage,
                                       @RequestPart Cafe cafe) throws IOException {
-        //
         cafe.setCafeImage(cafeImage.getBytes());
         if(cafeService.saveCafe(cafe)){
             return ResponseEntity.ok().build();
