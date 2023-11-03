@@ -1,6 +1,6 @@
 package com.white_space.cafe.controller;
 
-import com.white_space.cafe.dto.OnCreateCateDto;
+import com.white_space.cafe.dto.OnCreateCafeDto;
 import com.white_space.cafe.dto.OnUpdateRemainSeatDto;
 import com.white_space.cafe.service.CafeService;
 import com.white_space.cafe.dto.Cafe;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,8 +24,8 @@ public class CafeController {
     public ResponseEntity<?> saveCafe(@RequestPart MultipartFile cafeImage,
                                       @RequestPart Cafe cafe) throws IOException {
         cafe.setCafeImage(cafeImage.getBytes());
-        OnCreateCateDto createCateDto = cafe.onCreateCateDto();
-        if(cafeService.saveCafe(cafe)){
+        OnCreateCafeDto createCafeDto = cafe.onCreateCateDto();
+        if(cafeService.saveCafe(createCafeDto)){
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
@@ -46,10 +45,9 @@ public class CafeController {
 
     @PostMapping("/data")
     public ResponseEntity<?> saveData(@RequestBody Cafe cafe){
-
         OnUpdateRemainSeatDto updateDto = cafe.onUpdateRemainSeatDto();
         // A.I 보드에서 잔여 좌석등의 데이터 등을 갱신
-        if(cafeService.saveData(cafe)){
+        if(cafeService.updateData(updateDto)){
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();

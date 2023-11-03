@@ -3,12 +3,12 @@
 
 <mapper namespace="com.white_space.cafe.mapper.CafeMapper">
 
-    <insert id="saveCafe" parameterType="Cafe">
+    <insert id="saveCafe" parameterType="OnCreateCafeDto">
         INSERT INTO cafe (cafe_name,cafe_image)
         VALUES (#{cafeName},#{cafeImage})
     </insert>
 
-    <update id="updateData" parameterType="Cafe">
+    <update id="updateData" parameterType="OnUpdateRemainSeatDto">
         UPDATE cafe
         SET remain_seat = #{remainSeat}, percent = #{percent}
         WHERE cafe_id = #{cafeId}

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OnCreateCateDto {
+public class OnCreateCafeDto {
     private Integer cafeId;
     private String cafeName;
     private byte[] cafeImage;
